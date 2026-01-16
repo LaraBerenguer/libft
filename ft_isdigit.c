@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: larberen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/15 20:19:07 by larberen          #+#    #+#             */
-/*   Updated: 2026/01/15 20:19:29 by larberen         ###   ########.fr       */
+/*   Created: 2026/01/16 19:17:38 by larberen          #+#    #+#             */
+/*   Updated: 2026/01/16 19:17:38 by larberen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//no variables globales
-//si declaro variables en file de variable, static para ese file
+//#include <stdio.h>
 
-//comando ar para generar librería, prohibido libtool
-//libft.a debe crearse en la raiz del repo
+int	ft_isdigit(int c)
+{
+	if ((c >= 48 && c <= 57))
+		return (1);
+	else
+		return (0);
+}
 
-#ifndef LIBFT_H
-# define LIBFT_H
-
-int	ft_isalpha(int c);
-int	ft_isdigit(int c);
-int	ft_isalnum(int c);
-int	ft_isascii(int c);
-int	ft_isprint(int c);
-
-#endif
+/*int	main(void)
+{
+	char	c = 'a';
+	int r = ft_isdigit((unsigned char)c);
+	printf("%d", r);
+	return (0);
+}*/
