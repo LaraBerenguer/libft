@@ -1,0 +1,26 @@
+# Binarios y librerías
+*.o
+*.a
+a.out
+
+# Debug
+*.out
+*.log
+
+# Carpetas de testers
+libftTester/
+libft-war-machine/
+Libftest/
+tester.sh
+
+# IDE / editor
+.vscode/
+.idea/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Archivos temporales
+*~
+*.swp
