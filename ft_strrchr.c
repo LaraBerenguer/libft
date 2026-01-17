@@ -1,28 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: larberen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/16 19:38:47 by larberen          #+#    #+#             */
-/*   Updated: 2026/01/16 19:38:47 by larberen         ###   ########.fr       */
+/*   Created: 2026/01/17 22:04:36 by larberen          #+#    #+#             */
+/*   Updated: 2026/01/17 22:04:36 by larberen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include "libft.h"
+
+char	*ft_strrchr(const char *s, int c)
 {
-	if ((c >= 32 && c <= 126))
-		return (1);
-	else
-		return (0);
+	size_t			i;
+	size_t			position;
+
+	i = 0;
+	while (s[i])
+	{
+		if ((char)c == s[i])
+			position = i;
+		i++;
+	}
+	if ((char)c == '\0')
+		position = i;
+	if (position > 0)
+		return (s + position);
+	return (NULL);
 }
 
 /*#include <stdio.h>
 int	main(void)
 {
-	char	c = 32;
-	int r = ft_isprint((unsigned char)c);
-	printf("%d", r);
+	char	s[] = "abcdefgh";
+	int	c = 'e';
+	printf("S):  %p\n", s);
+	void * r = ft_strrchr(s, c);
+	printf("S):  %p\n", r);
 	return (0);
 }*/
