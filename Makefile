@@ -9,6 +9,7 @@ SRCS = ft_isalpha.c \
 		ft_isalnum.c \
 		ft_isascii.c \
 		ft_isprint.c \
+		ft_strlen.c \
 #RCS_FILES = $(addprefix $(SRCS_DIR)/, $(SRCS)) #path srcs/archivo.c
 
 OBJS = $(SRCS:.c=.o) #objs es .o, el ejecutable -> srcs/archivo.o
