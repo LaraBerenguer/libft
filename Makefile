@@ -23,6 +23,13 @@ SRCS = ft_isalpha.c \
 		ft_strchr.c \
 		ft_strrchr.c \
 		ft_strncmp.c \
+		ft_strnstr.c \
+		ft_atoi.c \
+		ft_calloc.c \
+		ft_strdup.c \
+		ft_substr.c \
+		ft_strjoin.c \
+		ft_itoa.c \
 #RCS_FILES = $(addprefix $(SRCS_DIR)/, $(SRCS)) #path srcs/archivo.c
 
 OBJS = $(SRCS:.c=.o) #objs es .o, el ejecutable -> srcs/archivo.o

@@ -14,10 +14,11 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t			i;
-	size_t			position;
+	int	position;
+	int	i;
 
 	i = 0;
+	position = -1;
 	while (s[i])
 	{
 		if ((char)c == s[i])
@@ -25,9 +26,9 @@ char	*ft_strrchr(const char *s, int c)
 		i++;
 	}
 	if ((char)c == '\0')
-		position = i;
-	if (position > 0)
-		return (s + position);
+		return ((char *)(s + i));
+	if (position != -1)
+		return ((char *)(s + position));
 	return (NULL);
 }
 
