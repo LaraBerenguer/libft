@@ -15,16 +15,18 @@
 
 int	ft_num_len(int n)
 {
-	int	flag;
-	int	num;
 	size_t	i;
+	int		flag;
+	long	num;
 
 	flag = 1;
-	num = n;
+	num = (long)n;
+	if (n == 0)
+		return (1);
 	if (n < 0)
 	{
 		flag = -1;
-		num = n * -1;
+		num = -n;
 	}
 	i = 0;
 	while (num > 0)
@@ -35,52 +37,37 @@ int	ft_num_len(int n)
 	if (flag < 0)
 		return (i + 1);
 	else
-		return (i);	
+		return (i);
 }
 
 char	*ft_itoa(int n)
 {
-	int	neg;
-	int	i;
 	char	*str;
-	int	num;
-	int	num_len;
+	long	num;
+	int		len;
+	int		i;
 
-	num_len = ft_num_len(n);
-	str = (void *)malloc(num_len + 1);
-	neg = 1;
-	num = n;
+	len = ft_num_len(n);
+	str = (void *)malloc(len + 1);
+	if (!str)
+		return (NULL);
+	num = (long)n;
+	str[0] = '0';
+	str[len] = '\0';
 	if (n < 0)
 	{
-		neg = -1;
-		num = n * -1;
-	}
-	i = num_len - 1;
-	
-	str[num_len] = '\0';
-
-	if (neg < 0)	
-	{
-		while (i > 0)
-		{
-			str[i] = (num % 10) + '0';
-			num = num / 10;
-			i--;		
-		}
 		str[0] = '-';
+		num = -num;
 	}
-	else
+	i = len - 1;
+	while (i >= 0 && !(str[0] == '-' && i == 0))
 	{
-		while (i >= 0)
-		{
-			str[i] = (num % 10) + '0';
-			num = num / 10;
-			i--;		
-		}
+		str[i] = (num % 10) + '0';
+		num = num / 10;
+		i--;
 	}
 	return (str);
 }
-
 
 /*#include <stdlib.h>
 #include <stdio.h>
@@ -90,6 +77,9 @@ int	main(void)
 
 	res = ft_itoa(0);
 	printf("0 → %s\n", res);
+	free(res);
+	res = ft_itoa(5);
+	printf("5 → %s\n", res);
 	free(res);
 	res = ft_itoa(42);
 	printf("42 → %s\n", res);

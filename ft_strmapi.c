@@ -1,49 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: larberen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/19 19:46:35 by larberen          #+#    #+#             */
-/*   Updated: 2026/01/19 19:46:35 by larberen         ###   ########.fr       */
+/*   Created: 2026/01/21 19:28:53 by larberen          #+#    #+#             */
+/*   Updated: 2026/01/21 19:28:53 by larberen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char	*new_string;
 	size_t	i;
-	size_t	s1_len;
 
-	s1_len = ft_strlen(s1);
-	new_string = (void *)malloc(s1_len + ft_strlen(s2) + 1);
-	if (!new_string)
-		return (NULL);
+	new_string = (void *)malloc(ft_strlen(s) + 1);
 	i = 0;
-	while (s1[i])
+	while (s[i])
 	{
-		new_string[i] = s1[i];
-		i++;
-	}
-	while (s2[i - s1_len])
-	{
-		new_string[i] = s2[i - s1_len];
+		new_string[i] = f(i, s[i]);
 		i++;
 	}
 	new_string[i] = '\0';
 	return (new_string);
 }
 
-/*#include <stdio.h>
+/*char	ft_capitalize(unsigned int i, char c)
+{
+	if (i == 0)
+		return (ft_toupper(c));
+	else
+		return (ft_tolower(c));
+}
+
+#include <stdio.h>
 int	main(void)
 {
-	char	s1[] = "When I was "; 
-	char	s2[] = "a young boy";
+	char	*strings[3] = {"abcd", "hola", "42barcelonaaa"};
+	char	*result;
+	int		i;
 
-	printf("%s\n", ft_strjoin(s1, s2));
+	i = 0;
+	while (i < 3)
+	{
+		result = ft_strmapi(strings[i], ft_capitalize);
+		printf("Original: %s -> Result: %s\n", strings[i], result);
+		free(result);
+		i++;
+	}
 	return (0);
 }*/

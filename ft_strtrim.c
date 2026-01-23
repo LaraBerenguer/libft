@@ -32,7 +32,7 @@ int	find_start(char const *s1, char const *set)
 		}
 		if (match == 0)
 			return (i);
-		i++;			
+		i++;
 	}
 	return (i);
 }
@@ -44,7 +44,7 @@ int	find_end(char const *s1, char const *set, int len)
 	int	match;
 
 	i = len - 1;
-	while (i > 0)
+	while (i >= 0)
 	{
 		j = 0;
 		match = 0;
@@ -56,7 +56,7 @@ int	find_end(char const *s1, char const *set, int len)
 		}
 		if (match == 0)
 			return (i);
-		i--;			
+		i--;
 	}
 	return (i);
 }
@@ -64,38 +64,44 @@ int	find_end(char const *s1, char const *set, int len)
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*trim_s;
-	int	trim_len;
-	int	s1_len;
-	int	start_index;
-	int	end_index;
-	int	i;
-	int	j;
+	int		start;
+	int		end;
+	int		i;
+	int		j;
 
-	s1_len = ft_strlen(s1);
-	start_index = find_start(s1, set);
-	end_index = find_end(s1, set, s1_len);
-	trim_len = end_index - start_index + 1;
-	trim_s = (void *)malloc(trim_len + 1);	
-	i = start_index;
+	if (!s1 || !set)
+		return (NULL);
+	start = find_start(s1, set);
+	end = find_end(s1, set, ft_strlen(s1));
+	if (start > end)
+		return (ft_strdup(""));
+	trim_s = (void *)malloc(end - start + 2);
+	if (!trim_s)
+		return (NULL);
+	i = start;
 	j = 0;
-	while (i < end_index)
+	while (i <= end)
 	{
 		trim_s[j] = s1[i];
 		i++;
 		j++;
 	}
-	trim_s[i] = '\0';
+	trim_s[j] = '\0';
 	return (trim_s);
 }
 
+/*#include <stdio.h>
 int	main(void)
 {
-	char	set[] = "&ap";
-	char	s[] = "phola&";
+	//char	set[] = "&bp";
+	char	set[] = "*";
+	//char	s[] = "phola&";
+	char	s[] = "***hola**";
 	//char	s[] = "hola&p";
 	//char	s[] = "&pahola";
 
 	char	*result = ft_strtrim(s, set);
+	printf("result: %s\n", result);
 	free(result);
 	return (0);
-}
+}*/

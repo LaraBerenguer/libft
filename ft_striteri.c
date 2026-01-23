@@ -1,46 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: larberen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/17 22:23:58 by larberen          #+#    #+#             */
-/*   Updated: 2026/01/17 22:23:58 by larberen         ###   ########.fr       */
+/*   Created: 2026/01/21 20:01:19 by larberen          #+#    #+#             */
+/*   Updated: 2026/01/21 20:01:19 by larberen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	size_t			i;
-	size_t			j;
+	unsigned int	i;
 
-	if (little[0] == '\0')
-		return ((char *)big);
 	i = 0;
-	while (big[i] && i < len)
+	while (s[i])
 	{
-		j = 0;
-		while (big[i + j] && little[j]
-			&& (i + j) < len
-			&& big[i + j] == little[j])
-		{
-			j++;
-		}
-		if (little[j] == '\0')
-			return ((char *)(big + i));
+		f(i, &s[i]);
 		i++;
 	}
-	return (NULL);
 }
-/*#include <stdio.h>
+
+/*void	ft_change(unsigned int, char* c)
+{
+	if (*c == 32)
+		*c = '_';
+}
+
+#include <stdio.h>
 int	main(void)
 {
-	char	s1[] = "Abracadabra";
-	char	s2[] = "ca";
-	size_t	n = 20;
-	printf("%d\n", ft_strnstr(s1, s2, n));
+	char	strings[4][100] = {"Hola que tal", "ft tumadre", "lololo", ""};
+	int		i;
+
+	i = 0;
+	while (i < 4)
+	{
+		printf("Original: %s\n", strings[i]);
+		ft_striteri(strings[i], ft_change);
+		printf("Result: %s\n", strings[i]);
+		i++;
+	}
 	return (0);
 }*/
