@@ -37,6 +37,7 @@ SRCS = ft_isalpha.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
+		ft_split.c \
 #RCS_FILES = $(addprefix $(SRCS_DIR)/, $(SRCS)) #path srcs/archivo.c
 
 OBJS = $(SRCS:.c=.o) #objs es .o, el ejecutable -> srcs/archivo.o
