@@ -6,7 +6,7 @@
 /*   By: larberen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 20:48:53 by larberen          #+#    #+#             */
-/*   Updated: 2026/01/26 20:48:53 by larberen         ###   ########.fr       */
+/*   Updated: 2026/01/31 18:03:02 by larberen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (!lst || !new)
-		return (NULL) ;
 	new->next = *lst;
 	*lst = new;
 }
@@ -37,5 +35,4 @@ int	main(void)
 
 	printf("%s\n", (char *)lst->content);
 	printf("%s\n", (char *)lst->next->content);
-}
 }*/

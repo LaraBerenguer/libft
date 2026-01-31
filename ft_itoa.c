@@ -12,21 +12,22 @@
 
 #include "libft.h"
 #include <stdlib.h>
+#include <stdio.h>
 
-int	ft_num_len(int n)
+static int	ft_num_len(int n)
 {
 	size_t	i;
 	int		flag;
 	long	num;
 
 	flag = 1;
-	num = (long)n;
 	if (n == 0)
 		return (1);
-	if (n < 0)
+	num = (long)n;
+	if (num < 0)
 	{
 		flag = -1;
-		num = -n;
+		num = -num;
 	}
 	i = 0;
 	while (num > 0)
@@ -43,18 +44,18 @@ int	ft_num_len(int n)
 char	*ft_itoa(int n)
 {
 	char	*str;
-	long	num;
 	int		len;
 	int		i;
+	long	num;
 
 	len = ft_num_len(n);
 	str = (void *)malloc(len + 1);
 	if (!str)
 		return (NULL);
-	num = (long)n;
 	str[0] = '0';
 	str[len] = '\0';
-	if (n < 0)
+	num = (long)n;
+	if (num < 0)
 	{
 		str[0] = '-';
 		num = -num;
@@ -69,7 +70,7 @@ char	*ft_itoa(int n)
 	return (str);
 }
 
-/*#include <stdlib.h>
+/* #include <stdlib.h>
 #include <stdio.h>
 int	main(void)
 {
@@ -91,7 +92,11 @@ int	main(void)
 	printf("123456 → %s\n", res);
 	free(res);
 	res = ft_itoa(-98765);
-	printf("-98765 → %s\n", res);
+	printf("-98765 → %s\n", res); 
+	res = ft_itoa(-2147483648);
+	printf("-2147483648 → %s\n", res);
+	res = ft_itoa(2147483648);
+	printf("2147483647 → %s\n", res);
 	free(res);
 	return (0);
-}*/
+} */

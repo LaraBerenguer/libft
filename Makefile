@@ -41,6 +41,12 @@ SRCS = ft_isalpha.c \
 		ft_lstnew.c \
 		ft_lstadd_front.c \
 		ft_lstsize.c \
+		ft_lstadd_back.c \
+		ft_lstdelone.c \
+		ft_lstclear.c \
+		ft_lstiter.c \
+		ft_lstmap.c \
+		ft_lstlast.c \
 #RCS_FILES = $(addprefix $(SRCS_DIR)/, $(SRCS)) #path srcs/archivo.c
 
 OBJS = $(SRCS:.c=.o) #objs es .o, el ejecutable -> srcs/archivo.o

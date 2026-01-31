@@ -13,8 +13,6 @@
 #include "libft.h"
 #include <stdlib.h>
 
-void	ft_bzero(void *s, size_t n);
-
 void	*ft_calloc(size_t nelem, size_t elsize)
 {
 	void	*m_point;

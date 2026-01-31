@@ -13,7 +13,7 @@
 #include "libft.h"
 #include <stdlib.h>
 
-int	count_words(char const *s, char c)
+static int	count_words(char const *s, char c)
 {
 	int	i;
 	int	count;
@@ -29,12 +29,22 @@ int	count_words(char const *s, char c)
 	return (count);
 }
 
+static size_t	move_to_last_char(const char *s, size_t *i, char c)
+{
+	size_t	start;
+
+	start = *i;
+	while (s[*i] && s[*i] != c)
+		*i = *i + 1;
+	return (start);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**matrix;
 	size_t	i;
 	size_t	j;
-	int		start;
+	size_t	start;
 
 	if (!s)
 		return (NULL);
@@ -47,9 +57,7 @@ char	**ft_split(char const *s, char c)
 	{
 		if (s[i] != c && (i == 0 || s[i - 1] == c))
 		{
-			start = i;
-			while (s[i] && s[i] != c)
-				i++;
+			start = move_to_last_char(s, &i, c);
 			matrix[j] = ft_substr(s, start, i - start);
 			j++;
 		}
@@ -59,8 +67,8 @@ char	**ft_split(char const *s, char c)
 	matrix[j] = NULL;
 	return (matrix);
 }
-
-/*#include <stdio.h>
+/* 
+#include <stdio.h>
 int	main(void)
 {
 	char	*tests[] = {
@@ -96,4 +104,5 @@ int	main(void)
 		i++;
 	}
 	return (0);
-}*/
+}
+ */

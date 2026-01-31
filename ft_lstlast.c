@@ -1,50 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.C                                       :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: larberen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/26 21:32:54 by larberen          #+#    #+#             */
-/*   Updated: 2026/01/26 21:32:54 by larberen         ###   ########.fr       */
+/*   Created: 2026/01/27 20:58:44 by larberen          #+#    #+#             */
+/*   Updated: 2026/01/31 17:59:19 by larberen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-int	ft_lstsize(t_list *lst);
+t_list	*ft_lstlast(t_list *lst)
 {
-	size_t	i;
-	void	*ptr;
-
 	if (!lst)
-		return (0);
-	ptr = lst;
-	i = 1;
-	while (ptr != NULL)
-	{
-		ptr = ptr->next;
-		i++;
-	}
-	return(i);
+		return (NULL);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
 }
 
 /*#include <stdio.h>
 int	main(void)
 {
-	t_list *lst;
-	t_list *n1;
-	t_list *n2;
+	t_list	a;
+	t_list	b;
+	t_list	c;
+	t_list	*last;
 
-	lst = NULL;
-	n1 = ft_lstnew("uno");
-	n2 = ft_lstnew("dos");
+	a.content = "Node A";
+	a.next = &b;
 
-	ft_lstadd_front(&lst, n1);
-	ft_lstadd_front(&lst, n2);
+	b.content = "Node B";
+	b.next = &c;
 
-	printf("%s\n", (char *)lst->content);
-	printf("%s\n", (char *)lst->next->content);
-}
+	c.content = "Node C";
+	c.next = NULL;
+
+	last = ft_lstlast(&a);
+	if (last)
+		printf("Last node: %s\n", (char *)last->content);
+	else
+		printf("Empty list!\n");
+
+	return (0);
 }*/

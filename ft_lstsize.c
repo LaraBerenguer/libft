@@ -1,28 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: larberen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/15 20:17:58 by larberen          #+#    #+#             */
-/*   Updated: 2026/01/31 18:12:51 by larberen         ###   ########.fr       */
+/*   Created: 2026/01/26 21:32:54 by larberen          #+#    #+#             */
+/*   Updated: 2026/01/27 21:45:31 by larberen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
+#include "libft.h"
+
+int	ft_lstsize(t_list *lst)
 {
-	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
-		return (1);
-	else
-		return (0);
+	int	i;
+
+	i = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }
 
 /*#include <stdio.h>
 int	main(void)
 {
-	char	c = '?';
-	int r = ft_isalpha((unsigned char)c);
-	printf("%d\n", r);
-	return (0);
+	t_list *lst;
+	t_list *n1;
+	t_list *n2;
+
+	lst = NULL;
+	n1 = ft_lstnew("uno");
+	n2 = ft_lstnew("dos");
+
+	ft_lstadd_front(&lst, n1);
+	ft_lstadd_front(&lst, n2);
+
+	printf("%s\n", (char *)lst->content);
+	printf("%s\n", (char *)lst->next->content);
+}
 }*/

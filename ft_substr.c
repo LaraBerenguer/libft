@@ -37,7 +37,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (sub_string);
 }
 
-/*#include <stdio.h>
+/* #include <stdio.h>
 int	main(void)
 {
 	char	*res;
@@ -61,4 +61,4 @@ int	main(void)
 	printf("Test 6: \"libft\", 0, 10 → \"%s\"\n", res);
 	free(res);
 	return (0);
-}*/
+} */

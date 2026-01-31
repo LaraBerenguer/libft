@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: larberen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/17 21:39:13 by larberen          #+#    #+#             */
-/*   Updated: 2026/01/27 20:49:41 by larberen         ###   ########.fr       */
+/*   Created: 2026/01/28 20:45:30 by larberen          #+#    #+#             */
+/*   Updated: 2026/01/28 20:45:30 by larberen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strchr(const char *s, int c)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	size_t	i;
+	del(lst->content);
+	free(lst);
+}
 
-	i = 0;
-	while (s[i])
-	{
-		if ((char)c == s[i])
-			return ((char *)(s + i));
-		i++;
-	}
-	if ((char)c == '\0')
-		return ((char *)(s + i));
-	return (NULL);
+void	ft_free(void *content)
+{
+	free(content);
 }
 
 /*#include <stdio.h>
+#include <string.h>
 int	main(void)
 {
-	char	s[] = "abcdefgh";
-	int	c = 'e';
-	printf("S):  %p\n", s);
-	void * r = ft_strchr(s, c);
-	printf("S):  %p\n", r);
+	t_list	*a;
+
+	a = malloc(sizeof(t_list));
+	a->content = malloc(64);
+	a->next = NULL;
+	ft_strlcpy(a->content, "Node A", 10);
+	printf("Before:\n%s\n", (char *)a->content);
+	ft_lstdelone(a, ft_free);
+	printf("After: \nNode deleted\n");
 	return (0);
 }*/

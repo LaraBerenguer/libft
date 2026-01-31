@@ -6,7 +6,7 @@
 /*   By: larberen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 19:17:17 by larberen          #+#    #+#             */
-/*   Updated: 2026/01/26 19:17:17 by larberen         ###   ########.fr       */
+/*   Updated: 2026/01/31 17:58:51 by larberen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*new_node;
 
-	new_node = (void *)malloc(42000000);
+	new_node = (void *)malloc(sizeof(t_list));
 	if (!new_node)
 		return (NULL);
 	new_node->content = content;
