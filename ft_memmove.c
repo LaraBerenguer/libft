@@ -6,7 +6,7 @@
 /*   By: larberen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 14:35:03 by larberen          #+#    #+#             */
-/*   Updated: 2026/01/17 14:35:03 by larberen         ###   ########.fr       */
+/*   Updated: 2026/02/02 19:35:52 by larberen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	size_t			i;
 
-	if (!dest || !src || !n)
+	if (dest == src || n == 0)
 		return (dest);
 	if (dest > src)
 	{
@@ -38,17 +38,3 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-
-/*#include <stdio.h>
-int	main(void)
-{
-	char	c[] = "abcdefgh";
-	char	*d = c + 4;
-	printf("C Before ft_memmove():  %s\n", c);
-	printf("D Before ft_memmove():  %s\n", d);
-	ft_memmove(d, c, 2);
-	//d[2] = '\0';
-	printf("C After ft_memmove():  %s\n", c);
-	printf("D After ft_memmove():  %s\n", d);
-	return (0);
-}*/
